@@ -37,10 +37,13 @@ class ImplementationUserRepository(IUserRepository):
                 raise ValueError(f"User not found with the email: {email}")
             return userFound
 
-    async def getAll(self) -> list[UserEntity]:
+    async def getAll(self, page: int, limit: int) -> list[UserEntity]:
         async with DatabaseConfiguration.getSession() as session:
-            stmt = select(UserEntity)
-            result = await session.execute(stmt)
+            result = await session.execute(
+                select(UserEntity).
+                limit(limit).
+                offset((page - 1) * limit)
+            )
             return result.scalars().all()
 
     async def updateById(self, userEntity: UserEntity, id: str) -> UserEntity:

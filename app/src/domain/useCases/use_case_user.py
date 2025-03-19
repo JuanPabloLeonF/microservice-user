@@ -13,8 +13,8 @@ class UseCaseUser(IServicesPortUser):
         userModel.setPassword(password=hast)
         return await self.iPersistencePortUser.create(userModel=userModel)
 
-    async def getAll(self) -> list[UserModel]:
-        return await self.iPersistencePortUser.getAll()
+    async def getAll(self, page: int, limit: int) -> list[UserModel]:
+        return await self.iPersistencePortUser.getAll(page=page, limit=limit)
 
     async def getById(self, id: str) -> UserModel:
         return await self.iPersistencePortUser.getById(id)

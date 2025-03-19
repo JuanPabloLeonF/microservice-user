@@ -26,8 +26,8 @@ class ImplementationHandlerUser(IHandlerUser):
         response: ResponseUser = self.iMapperHandler.mapperUserModelToResponseUser(userModel=userModelResponse)
         return response.getJSON()
 
-    async def getAll(self) -> list[ResponseUser]:
-        listUsersModels: list[UserModel] = await self.iServicesPortUser.getAll()
+    async def getAll(self, page: int, limit: int) -> list[ResponseUser]:
+        listUsersModels: list[UserModel] = await self.iServicesPortUser.getAll(page=page, limit=limit)
         listResponseUsers: list[ResponseUser] = [self.iMapperHandler.mapperUserModelToResponseUser(userModel=userModel) for userModel in listUsersModels]
         response: list[ResponseUser] = [userModel.getJSON() for userModel in listResponseUsers]
         return response

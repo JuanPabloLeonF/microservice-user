@@ -16,7 +16,7 @@ class IUserRepository(ABC):
         pass
 
     @abstractmethod
-    async def getAll(self) -> list[UserEntity]:
+    async def getAll(self, page: int, limit: int) -> list[UserEntity]:
         pass
 
     @abstractmethod

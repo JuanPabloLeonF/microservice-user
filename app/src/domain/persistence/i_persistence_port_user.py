@@ -10,7 +10,7 @@ class IPersistencePortUser(ABC):
         pass
 
     @abstractmethod
-    async def getAll(self) -> list[UserModel]:
+    async def getAll(self, page: int, limit: int) -> list[UserModel]:
         pass
 
     @abstractmethod

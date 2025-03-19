@@ -10,7 +10,7 @@ class IHandlerUser(ABC):
         pass
 
     @abstractmethod
-    async def getAll(self) -> list[ResponseUser]:
+    async def getAll(self, page: int, limit: int) -> list[ResponseUser]:
         pass
 
     @abstractmethod

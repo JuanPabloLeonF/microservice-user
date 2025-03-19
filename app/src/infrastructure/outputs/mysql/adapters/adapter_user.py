@@ -15,8 +15,8 @@ class AdapterUser(IPersistencePortUser):
         userEntitySave: UserEntity = await self.iUserRepository.create(userEntity=userEntity)
         return self.iMapperUser.mapperUserEntityToUserModel(userEntity=userEntitySave)
 
-    async def getAll(self) -> list[UserModel]:
-        listUserEntity: list[UserEntity] = await self.iUserRepository.getAll()
+    async def getAll(self, page: int, limit: int) -> list[UserModel]:
+        listUserEntity: list[UserEntity] = await self.iUserRepository.getAll(page=page, limit=limit)
         return self.iMapperUser.mapperListUserEntityToListUserModel(
             userEntityList=listUserEntity
         )

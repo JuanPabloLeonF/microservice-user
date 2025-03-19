@@ -22,9 +22,9 @@ class ControllerUser:
         return JSONResponse(content=response, status_code=status.HTTP_201_CREATED)
 
     @staticmethod
-    @routerUser.get(path="/all", status_code=200)
-    async def getAll() -> JSONResponse:
-        response: list[ResponseUser] = await iHandlerUser.getAll()
+    @routerUser.get(path="/all/{page}/{limit}", status_code=200)
+    async def getAll(page:int, limit:int) -> JSONResponse:
+        response: list[ResponseUser] = await iHandlerUser.getAll(page=page, limit=limit)
         return JSONResponse(content=response, status_code=status.HTTP_200_OK)
 
     @staticmethod
