@@ -36,7 +36,9 @@ services:
     ports:
       - "2000:2000"
     volumes:
-      - .:/microservice-user
+      - ./app:/microservice-user/app
+      - ./main.py:/microservice-user/main.py
+      - ./requirements.txt:/microservice-user/requirements.txt
     networks:
       - cinemusic-microservices-network
     depends_on:
