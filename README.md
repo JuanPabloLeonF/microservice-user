@@ -99,8 +99,11 @@ Para ejecutar el servicio en modo desarrollo:
 #Crear un entorno con python
 python -m venv env
 
-# Activar el entorno
+# Activar el entorno en linux y mac
 source env/bin/activate
+
+# Activar el entorno en windows
+env\Scripts\activate
 
 # Instalar dependencias
 pip install -r requirements.txt
